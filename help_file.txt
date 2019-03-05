@@ -1,0 +1,5 @@
+### Create React-app
+  npx create-react-app `name of app`
+
+### React-Router
+npm i --save react-router-dom
