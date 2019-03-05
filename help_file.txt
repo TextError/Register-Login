@@ -3,3 +3,6 @@
 
 ### React-Router
 npm i --save react-router-dom
+
+### React-Redux
+npm i --save react-redux redux redux-thunk
