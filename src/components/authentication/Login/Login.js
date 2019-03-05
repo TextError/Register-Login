@@ -17,12 +17,12 @@ export default class Login extends Component {
                     <form>
                       <div className="form-group">
                         <label htmlFor="username">Username</label>
-                        <input type="text" name="username" className="form-control" required />
+                        <input type="text" name="username" className="form-control" />
                       </div>
 
                       <div className="form-group">
                         <label htmlFor="password2">Password</label>
-                        <input type="password" name="password" className="form-control" required />
+                        <input type="password" name="password" className="form-control" />
                       </div>
 
                       <input type="submit" value="Login" className="btn btn-secondary btn-block" />
