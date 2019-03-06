@@ -1,7 +1,35 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+
+// Components
+import LabelInput from '../../common/components/Label_Input';
 
 export default class Login extends Component {
+  constructor() {
+    super();
+    this.state = {
+      email: '',
+      password: '',
+      errors: ''
+    }
+  };
+
+  onChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  onSubmit = e => {
+    e.preventDefault();
+    const { email, password } = this.state;
+    
+    const data = { email, password };
+    
+    console.log(data)
+  };
+
   render() {
+
+    const { errors } = this.state;
+
     return (
       <div className='login'>
         <section className="bg-light py-5">
@@ -14,16 +42,25 @@ export default class Login extends Component {
                       <i className="fas fa-sign-in-alt"></i> Login</h4>
                   </div>
                   <div className="card-body">
-                    <form>
-                      <div className="form-group">
-                        <label htmlFor="username">Username</label>
-                        <input type="text" name="username" className="form-control" />
-                      </div>
-
-                      <div className="form-group">
-                        <label htmlFor="password2">Password</label>
-                        <input type="password" name="password" className="form-control" />
-                      </div>
+                    <form noValidate onSubmit={this.onSubmit}>
+                      <LabelInput
+                        text='Email'
+                        type='email'
+                        icon='fas fa-envelope'
+                        name='email'
+                        onChange={this.onChange}
+                        value={this.state.email}
+                        error={errors}
+                      />
+                      <LabelInput
+                        text='Password'
+                        type='password'
+                        icon='fas fa-lock'
+                        name='password'
+                        onChange={this.onChange}
+                        value={this.state.password}
+                        error={errors}
+                      />
 
                       <input type="submit" value="Login" className="btn btn-secondary btn-block" />
                     </form>
