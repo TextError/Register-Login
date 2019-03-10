@@ -6,6 +6,9 @@ import { NavLink, withRouter } from 'react-router-dom';
 // Redux
 import { connect } from 'react-redux';
 
+// Components
+import Logo from './Logo';
+
 class Navbar extends Component {
   constructor() {
     super();
@@ -74,7 +77,7 @@ class Navbar extends Component {
 
     return (
       <nav className="navbar navbar-expand-lg navbar-light">
-        {/* Logo */}
+        <Logo />
         <button
           className="navbar-toggler" 
           type="button"
