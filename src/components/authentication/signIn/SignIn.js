@@ -3,7 +3,10 @@ import React, { Component } from 'react';
 // Components
 import LabelInput from '../../common/components/Label_Input';
 
-export default class Login extends Component {
+// Css
+import '../../../css/sign-in.css';
+
+class SignIn extends Component {
   constructor() {
     super();
     this.state = {
@@ -31,15 +34,15 @@ export default class Login extends Component {
     const { errors } = this.state;
 
     return (
-      <div className='login'>
-        <section className="bg-light py-5">
-          <div className="container">
-            <div className="row">
-              <div className="col-md-6 mx-auto">
+      <div className='sign-in d-flex'>
+        <section className="m-auto">
+          <div className="container no-gutters">
+            <div className="row no-gutters">
+              <div className="col">
                 <div className="card">
                   <div className="card-header bg-primary text-white">
-                    <h4>
-                      <i className="fas fa-sign-in-alt"></i> Login</h4>
+                    <h4 className='mb-0'>
+                      <i className="fas fa-sign-in-alt"></i> Sign In</h4>
                   </div>
                   <div className="card-body">
                     <form noValidate onSubmit={this.onSubmit}>
@@ -74,3 +77,5 @@ export default class Login extends Component {
     )
   }
 }
+
+export default SignIn;

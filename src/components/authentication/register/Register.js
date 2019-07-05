@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 // Components
 import LabelInput from '../../common/components/Label_Input';
 
-export default class Register extends Component {
+class Register extends Component {
   constructor() {
     super();
     this.state = {
@@ -101,3 +101,5 @@ export default class Register extends Component {
     )
   }
 }
+
+export default Register;

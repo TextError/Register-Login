@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { NavLink, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 // Redux
 import { connect } from 'react-redux';
 
 // Components
-import Logo from './Logo';
+import Logo from '../Logo';
+
+// Css
+import '../../../css/navbar.css'
 
 class Navbar extends Component {
   constructor() {
@@ -28,20 +31,18 @@ class Navbar extends Component {
     const authLinks = (
       <ul className="navbar-nav ml-auto mr-5">
         <li className="nav-item mr-3 mt-3">
-          <NavLink 
+          <Link 
             to='/dashboard'
             className='nav-link'
-            activeClassName="active"
             onClick={this.onClick}
-            ><span>Dashboard</span></NavLink>
+            ><span>Dashboard</span></Link>
         </li>
         <li className="nav-item mr-3 mt-3">
-          <NavLink 
+          <Link 
             to='/admin'
             className='nav-link'
-            activeClassName="active"
             onClick={this.onClick}
-            ><span>Admin</span></NavLink>
+            ><span>Admin</span></Link>
         </li>
         
         <li className="nav-item mr-3 mt-3">
@@ -55,28 +56,26 @@ class Navbar extends Component {
 
     // isAuthenticated === false
     const guestLinks = (
-      <ul className="navbar-nav ml-auto mr-5">
+      <ul className="navbar-nav">
         <li className="nav-item mr-3 mt-3">
-          <NavLink 
+          <Link 
             to='/register' 
             className='nav-link'
-            activeClassName="active"
             onClick={this.onClick}
-          ><span>Register</span></NavLink>
+          ><span>Register</span></Link>
         </li>
         <li className="nav-item mr-3 mt-3">
-          <NavLink 
-            to='/login' 
+          <Link 
+            to='/sign-in' 
             className='nav-link'
-            activeClassName="active"
             onClick={this.onClick}
-          ><span>Sign in</span></NavLink>
+          ><span>Sign in</span></Link>
         </li>
       </ul>
     );
 
     return (
-      <nav className="navbar navbar-expand-lg navbar-light">
+      <nav className="navbar navbar-expand-lg navbar-light navbar-height">
         <Logo />
         <button
           className="navbar-toggler" 
@@ -86,25 +85,18 @@ class Navbar extends Component {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className={classnames('collapse navbar-collapse', { 'show' : show })}>
-          <ul className='navbar-nav mr-auto m-r-5'>
+          <ul className='navbar-nav ml-auto'>
             <li className="nav-item mr-3 mt-3">
-            <NavLink 
-              to='/home' 
+            <Link 
+              to='/' 
               className='nav-link'
-              activeClassName="active"
               onClick={this.onClick}
-              ><span>Home</span></NavLink>
+              >
+                <span>Home</span>
+              </Link>
             </li>
-            <li className="nav-item mr-3 mt-3">
-            <NavLink 
-              to='/about' 
-              className='nav-link'
-              activeClassName="active"
-              onClick={this.onClick}
-              ><span>About</span></NavLink>
-            </li>
+            {isAuthenticated ? authLinks : guestLinks}
           </ul>
-          {isAuthenticated ? authLinks : guestLinks}
         </div>
       </nav>
     )
@@ -120,4 +112,4 @@ const mapStateToProps = state => ({
 });
 
 
-export default connect(mapStateToProps, {})(withRouter(Navbar))
+export default connect(mapStateToProps, {})(Navbar)

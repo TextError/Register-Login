@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
+// Css
+import '../../../css/footer.css';
+
 export default class Footer extends Component {
   render() {
     return (
       <div className='footer bg-dark text-white'>
-        <div className='row'>
+        <div className='row no-gutters'>
           <div className='col-6 m-auto'>
             <div className='text-center'>
               <span>Copyright &copy; {new Date().getFullYear()}</span>
