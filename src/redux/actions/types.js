@@ -1,2 +1,6 @@
-const GET_ERRORS = 'GET_ERRORS';
-const GET_CLEAR_ERROR = 'GET_CLEAR_ERROR';
+const ERRORS = {
+  ERROR: 'ERROR',
+  CLEAR_ERROR: 'CLEAR_ERROR'
+}
+
+export { ERRORS }
