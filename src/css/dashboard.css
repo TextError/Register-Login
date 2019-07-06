@@ -1,0 +1,11 @@
+.dashboard {
+  min-height: 82vh;
+}
+.dashboard-title h1{
+  font-size: 5rem;
+}
+.dashboard-title p {
+  border-bottom: 1px solid black;
+  font-size: 1.2rem;
+  padding-bottom: 5px;
+}
