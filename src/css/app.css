@@ -1,7 +1,3 @@
 html, body {
   height: 100%;
 }
-
-.app-container {
-  min-height: 100vh;
-}

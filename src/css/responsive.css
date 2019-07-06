@@ -1,5 +1,5 @@
 @media (max-width: 991px) {
   .home, .sign-in, .not-found{
-    min-height: 85vh !important;
+    min-height: 84.5vh !important;
   }
 }

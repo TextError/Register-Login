@@ -32,7 +32,7 @@ class App extends Component {
             <Navbar />
             <Switch>
               <Route exact path='/' component={Home} />
-              <Route exact path='/Sign-In' component={SignIn} />
+              <Route exact path='/sign-In' component={SignIn} />
               <Route exact path='/register' component={Register} />
               <Route component={NotFound} />
             </Switch>
