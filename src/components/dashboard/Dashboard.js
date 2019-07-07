@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import classnames from 'classnames';
 
 // Components
 import LabelInput from '../common/components/Label_Input';
@@ -24,8 +23,12 @@ class Dashboard extends Component {
 
   }
 
-  onEdit = e => {
+  onEdit = () => {
     this.setState({ edit: !this.state.edit });
+  }
+
+  onDelete = id => {
+    console.log(id)
   }
 
   onChange = e => {
@@ -64,19 +67,16 @@ class Dashboard extends Component {
                     <button className='btn btn-primary float-right'>Add</button>
                   </div>
                 </div>
-                <div className='row no-gutters'>
-                  <div className='col d-flex'>
-                    <Crud
-                      type='text'
-                      name='user_text'
-                      value={user_text}
-                      edit={edit}
-                      onChange={this.onChange}
-                      onEdit={this.onEdit}
-                      error={errors}
-                    />
-                  </div>
-                </div>
+                  <Crud
+                    type='text'
+                    name='user_text'
+                    value={user_text}
+                    edit={edit}
+                    onChange={this.onChange}
+                    onEdit={this.onEdit}
+                    error={errors}
+                    onDelete={this.onDelete}
+                  />
               </form>
             </div>
           </div>
