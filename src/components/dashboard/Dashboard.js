@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import classnames from 'classnames';
 
 // Components
 import LabelInput from '../common/components/Label_Input';
+import Crud from './Crud';
 
 // Css
 import '../../css/dashboard.css';
@@ -12,20 +14,22 @@ class Dashboard extends Component {
     this.state = {
       text: '',
       user_text: '',
+      edit: true,
       errors: ''
     }
   }
 
   onSubmit = e => {
+    e.preventDefault();
 
   }
 
   onChange = e => {
-    this.setState({ text: e.target.value })
+    this.setState({ [e.target.name]: e.target.value })
   }
 
   render() {
-    const { text, user_text, errors } = this.state;
+    const { text, user_text, edit, errors } = this.state;
     return (
       <div className='dashboard d-flex pl-3 pr-3'>
         <div className='m-auto'>
@@ -57,10 +61,15 @@ class Dashboard extends Component {
                   </div>
                 </div>
                 <div className='row no-gutters'>
-                  <div className='col'>
-                    <div className='dashboard-user'>
-                      
-                    </div>
+                  <div className='col d-flex'>
+                    <Crud
+                      type='text'
+                      name='user_text'
+                      value={user_text}
+                      edit={edit}
+                      onChange={this.onChange}
+                      error={errors}
+                    />
                   </div>
                 </div>
               </form>
