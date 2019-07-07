@@ -24,6 +24,10 @@ class Dashboard extends Component {
 
   }
 
+  onEdit = e => {
+    this.setState({ edit: !this.state.edit });
+  }
+
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value })
   }
@@ -68,6 +72,7 @@ class Dashboard extends Component {
                       value={user_text}
                       edit={edit}
                       onChange={this.onChange}
+                      onEdit={this.onEdit}
                       error={errors}
                     />
                   </div>
