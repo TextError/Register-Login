@@ -3,15 +3,26 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
 class Crud extends Component {
+  constructor() {
+    super();
+    this.state = {
+      edit: false
+    }
+  }
+
+  onEdit = () => {
+    this.setState({ edit: !this.state.edit })
+  }
 
   onDelete = id => () => {
     this.props.onDelete(id)
   }
   
   render() {
-    const { type, name, value, edit, onChange, onEdit, onDelete, error, id } = this.props;
+    const { type, name, value, onChange, error, id } = this.props;
+    const { edit } = this.state;
     return (
-      <div className='row no-gutters'>
+      <div className='row no-gutters mb-3'>
         <div className='col-9'>
           <div className='dashboard-user'>
             <div className='form-group mb-0'>
@@ -32,13 +43,13 @@ class Crud extends Component {
         <div className='col-3 m-auto d-flex'>
           <span 
             className='m-auto dashbord-edit'
-            onClick={onEdit}
+            onClick={this.onEdit}
             >
-              <i className="fas fa-pen"></i>
+              <i className={!edit ? 'fas fa-pen' : 'fas fa-check'}></i>
           </span> 
           <span 
             className='dashboard-delete float-right'
-            onClick={this.onDelete('test')}
+            onClick={this.onDelete(id)}
             >
             <button className='btn btn-primary'><i className='far fa-times-circle'></i></button>
           </span>
@@ -52,9 +63,7 @@ class Crud extends Component {
     type: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,
-    edit: PropTypes.bool.isRequired,
     onChange: PropTypes.func.isRequired,
-    onEdit: PropTypes.func.isRequired,
     onDelete: PropTypes.func.isRequired,
     id: PropTypes.string.isRequired,
     error: PropTypes.string,

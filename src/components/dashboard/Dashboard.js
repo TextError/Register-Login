@@ -7,13 +7,23 @@ import Crud from './Crud';
 // Css
 import '../../css/dashboard.css';
 
+const db = [
+  {
+    id: '1',
+    text: 'one'
+  },
+  {
+    id: '2',
+    text: 'two'
+  }
+]
+
 class Dashboard extends Component {
   constructor() {
     super();
     this.state = {
       text: '',
       user_text: '',
-      edit: true,
       errors: ''
     }
   }
@@ -23,12 +33,8 @@ class Dashboard extends Component {
 
   }
 
-  onEdit = () => {
-    this.setState({ edit: !this.state.edit });
-  }
-
   onDelete = id => {
-    console.log(id)
+    
   }
 
   onChange = e => {
@@ -36,7 +42,19 @@ class Dashboard extends Component {
   }
 
   render() {
-    const { text, user_text, edit, errors } = this.state;
+    const { text, user_text, errors } = this.state;
+
+    const item = db.map(i => 
+      <Crud
+        type='text'
+        name='user_text'
+        value={i.text}
+        onChange={this.onChange}
+        error={errors}
+        onDelete={this.onDelete}
+        id={i.id}
+      />
+      )
     return (
       <div className='dashboard d-flex pl-3 pr-3'>
         <div className='m-auto'>
@@ -67,16 +85,7 @@ class Dashboard extends Component {
                     <button className='btn btn-primary float-right'>Add</button>
                   </div>
                 </div>
-                  <Crud
-                    type='text'
-                    name='user_text'
-                    value={user_text}
-                    edit={edit}
-                    onChange={this.onChange}
-                    onEdit={this.onEdit}
-                    error={errors}
-                    onDelete={this.onDelete}
-                  />
+                  {item}
               </form>
             </div>
           </div>
