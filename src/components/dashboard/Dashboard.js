@@ -22,7 +22,6 @@ class Dashboard extends Component {
   constructor() {
     super();
     this.state = {
-      text: '',
       user_text: '',
       errors: ''
     }
@@ -34,7 +33,7 @@ class Dashboard extends Component {
   }
 
   onDelete = id => {
-    
+
   }
 
   onChange = e => {
@@ -42,19 +41,16 @@ class Dashboard extends Component {
   }
 
   render() {
-    const { text, user_text, errors } = this.state;
+    const { user_text, errors } = this.state;
 
-    const item = db.map(i => 
+    const item = db.map(({ id, text }) => 
       <Crud
-        type='text'
-        name='user_text'
-        value={i.text}
-        onChange={this.onChange}
-        error={errors}
+        key={id}
+        text={text}
         onDelete={this.onDelete}
-        id={i.id}
+        id={id}
       />
-      )
+    )
     return (
       <div className='dashboard d-flex pl-3 pr-3'>
         <div className='m-auto'>
@@ -75,9 +71,9 @@ class Dashboard extends Component {
                       text='Text'
                       type='text'
                       icon='far fa-plus-square'
-                      name='text'
+                      name='user_text'
                       onChange={this.onChange}
-                      value={text}
+                      value={user_text}
                       error={errors}
                     />
                   </div>

@@ -6,12 +6,22 @@ class Crud extends Component {
   constructor() {
     super();
     this.state = {
-      edit: false
+      edit: false,
+      error: '',
+      text: ''
     }
+  }
+
+  componentDidMount() {
+    this.setState({ text: this.props.text })
   }
 
   onEdit = () => {
     this.setState({ edit: !this.state.edit })
+  }
+
+  onChange = e => {
+    this.setState({ text: e.target.value })
   }
 
   onDelete = id => () => {
@@ -19,8 +29,8 @@ class Crud extends Component {
   }
   
   render() {
-    const { type, name, value, onChange, error, id } = this.props;
-    const { edit } = this.state;
+    const { id } = this.props;
+    const { edit, text, error } = this.state;
     return (
       <div className='row no-gutters mb-3'>
         <div className='col-9'>
@@ -28,11 +38,10 @@ class Crud extends Component {
             <div className='form-group mb-0'>
               <div className='input-group'>
                 <input
-                  type={type}
+                  type='text'
                   className={classnames('form-control form-control-lg', {'is-invalid' : error})}
-                  name={name}
-                  value={value}
-                  onChange={onChange}
+                  value={text}
+                  onChange={this.onChange}
                   disabled={edit ? false : true}
                 />
                 {error && <div className='invalid-feedback'>{error}</div>}
@@ -60,17 +69,9 @@ class Crud extends Component {
 };
   
   Crud.propTypes = {
-    type: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
-    onChange: PropTypes.func.isRequired,
     onDelete: PropTypes.func.isRequired,
+    text: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
-    error: PropTypes.string,
-  };
-  
-  Crud.defaultProps = {
-    type: 'text'
   };
   
   export default Crud;
