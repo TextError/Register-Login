@@ -30,14 +30,14 @@ class Navbar extends Component {
     // isAuthenticated === true
     const authLinks = (
       <ul className="navbar-nav ml-auto mr-5">
-        <li className="nav-item mr-3 mt-3">
+        <li className="nav-item mr-3">
           <Link 
             to='/dashboard'
             className='nav-link'
             onClick={this.onClick}
             ><span>Dashboard</span></Link>
         </li>
-        <li className="nav-item mr-3 mt-3">
+        <li className="nav-item mr-3">
           <Link 
             to='/admin'
             className='nav-link'
@@ -45,7 +45,7 @@ class Navbar extends Component {
             ><span>Admin</span></Link>
         </li>
         
-        <li className="nav-item mr-3 mt-3">
+        <li className="nav-item mr-3">
           <span
             className='nav-link'
             onClick={this.onSignOut}
@@ -57,14 +57,14 @@ class Navbar extends Component {
     // isAuthenticated === false
     const guestLinks = (
       <ul className="navbar-nav">
-        <li className="nav-item mr-3 mt-3">
+        <li className="nav-item mr-3">
           <Link 
             to='/register' 
             className='nav-link'
             onClick={this.onClick}
           ><span>Register</span></Link>
         </li>
-        <li className="nav-item mr-3 mt-3">
+        <li className="nav-item mr-3">
           <Link 
             to='/sign-in' 
             className='nav-link'
@@ -86,7 +86,7 @@ class Navbar extends Component {
         </button>
         <div className={classnames('collapse navbar-collapse', { 'show' : show })}>
           <ul className='navbar-nav ml-auto'>
-            <li className="nav-item mr-3 mt-3">
+            <li className="nav-item mr-3">
             <Link 
               to='/' 
               className='nav-link'
